@@ -172,3 +172,17 @@ cargo run
 This agent was built and battle-tested against KuCoin's live Futures API. It is published for educational and portfolio purposes only.
 
 **The author assumes no responsibility for any financial losses or gains incurred by users of this software.** This code is provided as-is, with no guarantees of correctness, profitability, or suitability for live trading. Automated trading involves significant financial risk — always verify order parameters before deploying against real capital.
+
+---
+
+## Agentic Development & Orchestration
+
+This repository also serves as a portfolio piece showcasing my ability to direct and orchestrate agentic systems (such as LLMs and AI software engineering agents).
+
+The initial single-file script was refactored entirely by an autonomous agent under my guidance to demonstrate:
+- **Clean Architecture:** Breaking procedural code down into logical, modular components (`api`, `auth`, `math`, `models`).
+- **Production-Grade Safety:** Replacing standard `.expect()` panics with robust `anyhow` and `thiserror` based error handling.
+- **Test-Driven Refactoring:** Instructing the agent to generate and run unit tests for critical business logic (position sizing and auth headers).
+- **Automated Documentation:** Using agents to generate consistent, standard `rustdoc` comments across the entire codebase.
+
+This project highlights how AI engineering tools can be effectively managed to turn a simple proof-of-concept into a structured, production-ready codebase.
