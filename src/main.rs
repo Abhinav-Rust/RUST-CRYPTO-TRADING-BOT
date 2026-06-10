@@ -31,11 +31,28 @@ async fn main() -> Result<()> {
         api_passphrase,
     };
 
+    let margin_usdt = env::var("MARGIN_USDT")
+        .unwrap_or_else(|_| MARGIN_USDT.to_string())
+        .parse::<f64>()
+        .unwrap_or(MARGIN_USDT);
+
+    let leverage = env::var("LEVERAGE")
+        .unwrap_or_else(|_| LEVERAGE.to_string())
+        .parse::<f64>()
+        .unwrap_or(LEVERAGE);
+
+    let profit_target_usdt = env::var("PROFIT_TARGET_USDT")
+        .unwrap_or_else(|_| PROFIT_TARGET_USDT.to_string())
+        .parse::<f64>()
+        .unwrap_or(PROFIT_TARGET_USDT);
+
+    let symbol = env::var("SYMBOL").unwrap_or_else(|_| SYMBOL.to_string());
+
     let config = PositionConfig {
-        margin_usdt: MARGIN_USDT,
-        leverage: LEVERAGE,
-        profit_target_usdt: PROFIT_TARGET_USDT,
-        symbol: SYMBOL.to_string(),
+        margin_usdt,
+        leverage,
+        profit_target_usdt,
+        symbol,
     };
 
     let client = KuCoinApiClient::new(credentials);
@@ -63,6 +80,15 @@ async fn main() -> Result<()> {
     println!("2. Executing Market Long Entry");
     let entry_res = client.place_market_entry(&config, calc.lots).await?;
     println!("Entry Order HTTP Status: {}", entry_res.status());
+
+    if !entry_res.status().is_success() {
+        let entry_res_text = entry_res.text().await?;
+        anyhow::bail!(
+            "Market entry order failed. Aborting to prevent naked orders. Response: {}",
+            entry_res_text
+        );
+    }
+
     let entry_res_text = entry_res.text().await?;
     println!("Entry Response: {}", entry_res_text);
 
@@ -71,6 +97,15 @@ async fn main() -> Result<()> {
         .place_limit_take_profit(&config, calc.lots, calc.target_tp_price)
         .await?;
     println!("Take Profit Order HTTP Status: {}", tp_res.status());
+
+    if !tp_res.status().is_success() {
+        let tp_res_text = tp_res.text().await?;
+        anyhow::bail!(
+            "Take profit order failed. You may have a naked position! Response: {}",
+            tp_res_text
+        );
+    }
+
     let tp_res_text = tp_res.text().await?;
     println!("Take Profit Response: {}", tp_res_text);
 

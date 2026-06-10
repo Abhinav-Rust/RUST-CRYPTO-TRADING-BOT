@@ -56,10 +56,7 @@ pub fn generate_auth_headers(
     headers.insert("KC-API-KEY", HeaderValue::from_str(&credentials.api_key)?);
     headers.insert("KC-API-SIGN", HeaderValue::from_str(&signature)?);
     headers.insert("KC-API-TIMESTAMP", HeaderValue::from_str(&timestamp)?);
-    headers.insert(
-        "KC-API-PASSPHRASE",
-        HeaderValue::from_str(&pass_signature)?,
-    );
+    headers.insert("KC-API-PASSPHRASE", HeaderValue::from_str(&pass_signature)?);
     headers.insert("KC-API-KEY-VERSION", HeaderValue::from_static("2"));
 
     Ok(headers)
