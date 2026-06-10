@@ -20,8 +20,14 @@ mod tests {
         assert!(headers.contains_key("KC-API-PASSPHRASE"));
         assert!(headers.contains_key("KC-API-KEY-VERSION"));
 
-        assert_eq!(headers.get("KC-API-KEY").unwrap().to_str().unwrap(), "test_key");
-        assert_eq!(headers.get("KC-API-KEY-VERSION").unwrap().to_str().unwrap(), "2");
+        assert_eq!(
+            headers.get("KC-API-KEY").unwrap().to_str().unwrap(),
+            "test_key"
+        );
+        assert_eq!(
+            headers.get("KC-API-KEY-VERSION").unwrap().to_str().unwrap(),
+            "2"
+        );
     }
 
     #[test]
