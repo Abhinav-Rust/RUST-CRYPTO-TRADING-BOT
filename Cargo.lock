@@ -537,23 +537,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "kucoin-trial-bot"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "base64",
- "dotenv",
- "hmac",
- "reqwest",
- "serde",
- "serde_json",
- "sha2",
- "thiserror",
- "tokio",
- "uuid",
-]
-
-[[package]]
 name = "leb128fmt"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -813,6 +796,23 @@ dependencies = [
  "wasm-bindgen-futures",
  "web-sys",
  "winreg",
+]
+
+[[package]]
+name = "rust-crypto-trading-bot"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "base64",
+ "dotenv",
+ "hmac",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "sha2",
+ "thiserror",
+ "tokio",
+ "uuid",
 ]
 
 [[package]]
