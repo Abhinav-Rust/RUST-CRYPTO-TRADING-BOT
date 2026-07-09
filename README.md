@@ -7,7 +7,7 @@
 
 ## What This Is
 
-A **fire-and-forget scalp trading engine** that executes a complete trade lifecycle in a single run:
+A **fire-and-forget scalp trading bot** that executes a complete trade lifecycle in a single run:
 
 1. **Authenticate** against KuCoin's V2 Futures API using HMAC-SHA256 with double-signed passphrases
 2. **Fetch** live contract metadata (price, multiplier, tick size) for precise sizing
@@ -42,7 +42,7 @@ The entire flow runs in ~200ms end-to-end.
              │                      │                      │
              ▼                      ▼                      ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         Calculation Engine                              │
+│                         Calculation Layer                              │
 │                                                                         │
 │   Position Value  =  Margin (USDT) × Leverage                          │
 │   Contract Lots   =  (Position Value / Price) / Multiplier → round()   │
