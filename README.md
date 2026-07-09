@@ -1,4 +1,4 @@
-# KuCoin Futures Scalp Agent — Automated Order Execution (Rust)
+# RUST-CRYPTO-TRADING-BOT
 
 > An asynchronous, zero-latency automated trading agent built in Rust for the KuCoin Futures API. Implements HMAC-SHA256 double-signing authentication, dynamic position sizing from live contract metadata, and atomic market-entry → limit-exit order sequencing.
 
