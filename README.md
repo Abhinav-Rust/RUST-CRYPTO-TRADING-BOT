@@ -4,14 +4,6 @@
 
 ---
 
-## 🏷️ Recommended GitHub Topics
-
-To maximize the SEO and discoverability of this repository, ensure the following tags are added to your Repository "Topics" (via the gear icon ⚙️ next to the "About" section on your repository homepage):
-
-`rust`, `cryptocurrency`, `algorithmic-trading`, `kucoin`, `trading-bot`, `ai-agent`, `hmac`
-
----
-
 ## What This Is
 
 A **fire-and-forget scalp trading engine** that executes a complete trade lifecycle in a single run:
